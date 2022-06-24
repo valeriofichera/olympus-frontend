@@ -30,7 +30,7 @@ type RedeemModalProps = {
 const DECIMAL_PLACES = 2;
 const DECIMAL_FORMAT = { decimals: DECIMAL_PLACES, format: true };
 
-export function RedeemYieldModal({
+export function RedeemRebasesModal({
   isModalOpen,
   callbackFunc,
   cancelFunc,
@@ -61,14 +61,20 @@ export function RedeemYieldModal({
   };
 
   return (
-    <Modal open={isModalOpen} onClose={cancelFunc} headerText={t`Redeem Yield`} closePosition="left" minHeight="200px">
+    <Modal
+      open={isModalOpen}
+      onClose={cancelFunc}
+      headerText={t`Redeem Rebases`}
+      closePosition="left"
+      minHeight="200px"
+    >
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} sm={4}>
                 <Typography variant="body1" className="grey-text">
-                  <Trans>Redeemable Yield</Trans>
+                  <Trans>Redeemable Rebases</Trans>
                 </Typography>
                 <Typography variant="h6">
                   {redeemableBalance.toString(DECIMAL_FORMAT)} {t` sOHM`}

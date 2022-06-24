@@ -1,4 +1,4 @@
-import "./YieldRecipients.scss";
+import "./RebaseRecipients.scss";
 
 import { t } from "@lingui/macro";
 import { Grid, Tooltip, Typography } from "@mui/material";
@@ -25,7 +25,7 @@ interface IUserDonationInfo {
   date: string;
   deposit: string;
   recipient: string;
-  yieldDonated: string;
+  rebasesDonated: string;
 }
 
 interface DepositRowProps {
@@ -70,8 +70,8 @@ export const DepositTableRow = ({ depositObject, giveAssetType, changeAssetType 
     return GetCorrectContractUnits(depositObject.deposit, "sOHM", currentIndex);
   };
 
-  const getYieldDonated = () => {
-    return GetCorrectContractUnits(depositObject.yieldDonated, "sOHM", currentIndex);
+  const getRebasesDonated = () => {
+    return GetCorrectContractUnits(depositObject.rebasesDonated, "sOHM", currentIndex);
   };
 
   const handleManageModalCancel = () => {
@@ -142,7 +142,7 @@ export const DepositTableRow = ({ depositObject, giveAssetType, changeAssetType 
       )}
       <Grid item xs={4} sm={2} style={{ textAlign: "right" }}>
         <Typography variant="body1">
-          {getYieldDonated().toString({ decimals: DECIMAL_PLACES, format: true })} sOHM
+          {getRebasesDonated().toString({ decimals: DECIMAL_PLACES, format: true })} sOHM
         </Typography>
       </Grid>
       <Grid item xs={4} sm={3} style={{ textAlign: "right" }}>
@@ -163,7 +163,7 @@ export const DepositTableRow = ({ depositObject, giveAssetType, changeAssetType 
         giveAssetType={giveAssetType}
         changeAssetType={changeAssetType}
         depositDate={depositObject.date}
-        yieldSent={depositObject.yieldDonated}
+        rebasesSent={depositObject.rebasesDonated}
         project={projectMap.get(depositObject.recipient)}
         currentDepositId={depositObject.id}
         key={"manage-modal-" + depositObject.recipient}

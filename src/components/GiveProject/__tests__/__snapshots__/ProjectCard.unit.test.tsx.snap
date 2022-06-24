@@ -631,7 +631,7 @@ exports[`<ProjectCard/> should render page 1`] = `
                                 class="MuiGrid-root MuiGrid-item subtext css-159wrwf-MuiGrid-root"
                               >
                                  
-                                Yield
+                                Rebases
                               </div>
                             </div>
                             <div
@@ -1116,7 +1116,7 @@ exports[`<ProjectCard/> should render page without finish date 1`] = `
                                 class="MuiGrid-root MuiGrid-item subtext css-159wrwf-MuiGrid-root"
                               >
                                  
-                                Yield
+                                Rebases
                               </div>
                             </div>
                             <div
@@ -1596,7 +1596,7 @@ exports[`<ProjectCard/> should render page without image 1`] = `
                                 class="MuiGrid-root MuiGrid-item subtext css-159wrwf-MuiGrid-root"
                               >
                                  
-                                Yield
+                                Rebases
                               </div>
                             </div>
                             <div

@@ -18,7 +18,7 @@ import { GIVE_MAX_DECIMALS } from "./constants";
 import { useRedeem } from "./hooks/useRedeem";
 import { useOldRedeem } from "./hooks/useRedeemV1";
 import data from "./projects.json";
-import { RedeemCancelCallback, RedeemYieldModal } from "./RedeemYieldModal";
+import { RedeemCancelCallback, RedeemRebasesModal } from "./RedeemRebasesModal";
 
 // Consistent with staking page
 const DECIMAL_PLACES = 4;
@@ -26,10 +26,10 @@ const ZERO_NUMBER = new DecimalBigNumber("0");
 const DECIMAL_FORMAT = { decimals: DECIMAL_PLACES, format: true };
 const NO_DECIMAL_FORMAT = { format: true };
 
-export default function RedeemYield() {
+export default function RedeemRebases() {
   const { data: account } = useAccount();
   const address = account?.address ? account.address : "";
-  const [isRedeemYieldModalOpen, setIsRedeemYieldModalOpen] = useState(false);
+  const [isRedeemRebasesModalOpen, setIsRedeemRebasesModalOpen] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { projects } = data;
@@ -90,10 +90,10 @@ export default function RedeemYield() {
   const oldRedeemMutation = useOldRedeem();
 
   useEffect(() => {
-    if (isRedeemYieldModalOpen) setIsRedeemYieldModalOpen(false);
+    if (isRedeemRebasesModalOpen) setIsRedeemRebasesModalOpen(false);
   }, [redeemMutation.isSuccess, oldRedeemMutation.isSuccess]);
 
-  // Get project sOHM yield goal and return as a number
+  // Get project sOHM rebases goal and return as a number
   const getRecipientGoal = (address: string): DecimalBigNumber => {
     const project = projectMap.get(address);
     if (project) return new DecimalBigNumber(project.depositGoal.toString());
@@ -127,19 +127,19 @@ export default function RedeemYield() {
   };
 
   const handleRedeemButtonClick = () => {
-    setIsRedeemYieldModalOpen(true);
+    setIsRedeemRebasesModalOpen(true);
   };
 
-  const handleRedeemYieldModalSubmit = async () => {
+  const handleRedeemRebasesModalSubmit = async () => {
     await redeemMutation.mutate({ token: "sOHM" });
   };
 
-  const handleOldRedeemYieldModalSubmit = async () => {
+  const handleOldRedeemRebasesModalSubmit = async () => {
     await oldRedeemMutation.mutate();
   };
 
-  const handleRedeemYieldModalCancel: RedeemCancelCallback = () => {
-    setIsRedeemYieldModalOpen(false);
+  const handleRedeemRebasesModalCancel: RedeemCancelCallback = () => {
+    setIsRedeemRebasesModalOpen(false);
   };
 
   return (
@@ -169,7 +169,7 @@ export default function RedeemYield() {
           {isRecipientInfoLoading ? <Skeleton /> : getRedeemableBalance().toString(DECIMAL_FORMAT)} sOHM
         </Typography>
         <Typography variant="body1" align="center" className="subtext">
-          Redeemable Yield
+          Redeemable Rebases
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -177,7 +177,7 @@ export default function RedeemYield() {
           <Grid item xs />
           <Grid item xs={12} sm={6}>
             <PrimaryButton onClick={() => handleRedeemButtonClick()} disabled={!canRedeem()} fullWidth>
-              <Trans>Redeem Yield</Trans>
+              <Trans>Redeem Rebases</Trans>
             </PrimaryButton>
           </Grid>
           <Grid item xs />
@@ -241,16 +241,16 @@ export default function RedeemYield() {
             data-testid="data-redeemable-balance"
           />
           <DataRow
-            title={t`Next Reward Amount`}
+            title={t`Next Rebase Amount`}
             balance={`${nextRewardValue.toString(DECIMAL_FORMAT)} ${t`sOHM`}`}
             isLoading={isStakingRebaseRateLoading}
             data-testid="data-next-reward-amount"
           />
           <DataRow
-            title={t`Next Reward Yield`}
+            title={t`Next Rebase Rate`}
             balance={`${stakingRebasePercentage.toString(DECIMAL_FORMAT)}%`}
             isLoading={isStakingRebaseRateLoading}
-            data-testid="data-next-reward-yield"
+            data-testid="data-next-reward-rate"
           />
           <DataRow
             title={t`ROI (5-Day Rate)`}
@@ -261,10 +261,10 @@ export default function RedeemYield() {
         </Box>
       </Grid>
       <Grid item>
-        <RedeemYieldModal
-          isModalOpen={isRedeemYieldModalOpen}
-          callbackFunc={contract === "new" ? handleRedeemYieldModalSubmit : handleOldRedeemYieldModalSubmit}
-          cancelFunc={handleRedeemYieldModalCancel}
+        <RedeemRebasesModal
+          isModalOpen={isRedeemRebasesModalOpen}
+          callbackFunc={contract === "new" ? handleRedeemRebasesModalSubmit : handleOldRedeemRebasesModalSubmit}
+          cancelFunc={handleRedeemRebasesModalCancel}
           contract={contract}
           deposit={totalDebt}
           redeemableBalance={getRedeemableBalance()}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
+exports[`Redeem Rebases should render Redeem Rebases Screen 1`] = `
 <div>
   <div
     data-rk=""
@@ -24,7 +24,7 @@ exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter subtext css-4p4edz-MuiTypography-root"
         >
-          Redeemable Yield
+          Redeemable Rebases
         </p>
       </div>
       <div
@@ -44,7 +44,7 @@ exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
               tabindex="0"
               type="button"
             >
-              Redeem Yield
+              Redeem Rebases
             </button>
           </div>
           <div
@@ -105,7 +105,7 @@ exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Amount
+                Next Rebase Amount
               </p>
             </div>
             <p
@@ -124,7 +124,7 @@ exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Yield
+                Next Rebase Rate
               </p>
             </div>
             <p
@@ -163,7 +163,7 @@ exports[`Redeem Yield should render Redeem Yield Screen 1`] = `
 </div>
 `;
 
-exports[`Redeem Yield should show extra content if project wallet 1`] = `
+exports[`Redeem Rebases should show extra content if project wallet 1`] = `
 <div>
   <div
     data-rk=""
@@ -187,7 +187,7 @@ exports[`Redeem Yield should show extra content if project wallet 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter subtext css-4p4edz-MuiTypography-root"
         >
-          Redeemable Yield
+          Redeemable Rebases
         </p>
       </div>
       <div
@@ -207,7 +207,7 @@ exports[`Redeem Yield should show extra content if project wallet 1`] = `
               tabindex="0"
               type="button"
             >
-              Redeem Yield
+              Redeem Rebases
             </button>
           </div>
           <div
@@ -333,7 +333,7 @@ exports[`Redeem Yield should show extra content if project wallet 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Amount
+                Next Rebase Amount
               </p>
             </div>
             <p
@@ -352,7 +352,7 @@ exports[`Redeem Yield should show extra content if project wallet 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Yield
+                Next Rebase Rate
               </p>
             </div>
             <p
@@ -391,7 +391,7 @@ exports[`Redeem Yield should show extra content if project wallet 1`] = `
 </div>
 `;
 
-exports[`Redeem Yield should show redeemable balance as 100 sOHM 1`] = `
+exports[`Redeem Rebases should show redeemable balance as 100 sOHM 1`] = `
 <div>
   <div
     data-rk=""
@@ -415,7 +415,7 @@ exports[`Redeem Yield should show redeemable balance as 100 sOHM 1`] = `
         <p
           class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter subtext css-4p4edz-MuiTypography-root"
         >
-          Redeemable Yield
+          Redeemable Rebases
         </p>
       </div>
       <div
@@ -435,7 +435,7 @@ exports[`Redeem Yield should show redeemable balance as 100 sOHM 1`] = `
               tabindex="0"
               type="button"
             >
-              Redeem Yield
+              Redeem Rebases
             </button>
           </div>
           <div
@@ -496,7 +496,7 @@ exports[`Redeem Yield should show redeemable balance as 100 sOHM 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Amount
+                Next Rebase Amount
               </p>
             </div>
             <p
@@ -515,7 +515,7 @@ exports[`Redeem Yield should show redeemable balance as 100 sOHM 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 css-4xvy19-MuiTypography-root"
               >
-                Next Reward Yield
+                Next Rebase Rate
               </p>
             </div>
             <p

@@ -7,7 +7,7 @@ export const CallToRedeem = () => {
   return (
     <Box className="call-to-redeem">
       <Typography variant="h6">
-        <Trans>You have redeemable yield on the old contract</Trans>
+        <Trans>You have redeemable sOHM on the old contract</Trans>
       </Typography>
     </Box>
   );

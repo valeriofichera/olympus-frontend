@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Give View Connected should render project card with Donate Yield Button 1`] = `
+exports[`Give View Connected should render project card with Donate Rebases Button 1`] = `
 <div>
   <div
     data-rk=""
@@ -322,7 +322,7 @@ exports[`Give View Connected should render project card with Donate Yield Button
                               >
                                 sOHM
                                  
-                                Yield
+                                Rebases
                               </div>
                             </div>
                             <div
@@ -409,7 +409,7 @@ exports[`Give View Connected should render project card with Donate Yield Button
                             tabindex="0"
                             type="button"
                           >
-                            Donate Yield
+                            Donate Rebases
                           </button>
                         </div>
                       </div>
@@ -1157,7 +1157,7 @@ exports[`Give View Disconnected should render Causes Dashboard 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter css-4p4edz-MuiTypography-root"
                 >
-                  You can direct your yield to a recipient of your choice
+                  You can direct your rebases to a recipient of your choice
                 </p>
               </div>
               <div
@@ -2039,7 +2039,7 @@ exports[`Give View Disconnected should render Causes Dashboard as Default 1`] = 
                               <p
                                 class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter css-4p4edz-MuiTypography-root"
                               >
-                                You can direct your yield to a recipient of your choice
+                                You can direct your rebases to a recipient of your choice
                               </p>
                             </div>
                             <div
@@ -2142,7 +2142,7 @@ exports[`Give View Disconnected should render Causes Dashboard as Default 1`] = 
                       <p
                         class="MuiTypography-root MuiTypography-body2 MuiTypography-alignCenter css-9rey0-MuiTypography-root"
                       >
-                        Olympus Give is a means of directing the yield that is accrued on your sOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
+                        Olympus Give is a means of directing the rebases accrued by your sOHM or sOHM equivalent value of gOHM to another wallet. The first step is depositing your sOHM and specifying a recipient.
                       </p>
                     </div>
                   </div>
@@ -2361,7 +2361,7 @@ exports[`Give View Disconnected should render Grants Dashboard 1`] = `
           <p
             class="MuiTypography-root MuiTypography-body1 css-69sme-MuiTypography-root"
           >
-            Upon receiving an Olympus Grant, you gain exposure to the Olympus Give ecosystem where your performance is rewarded every 8 hours through the yield your grant generates; you then can also receive support from other Ohmies and this acts as a loop that compounds value and amplifies the reach and growth of your mission.
+            Upon receiving an Olympus Grant, you gain exposure to the Olympus Give ecosystem where your performance is rewarded every 8 hours through the rebases your grant generates; you then can also receive support from other Ohmies and this acts as a loop that compounds value and amplifies the reach and growth of your mission.
           </p>
         </div>
         <div
@@ -2384,7 +2384,7 @@ exports[`Give View Disconnected should render Grants Dashboard 1`] = `
 </div>
 `;
 
-exports[`Give View Disconnected should render Yield Recipients Screen with Donate to a cause button 1`] = `
+exports[`Give View Disconnected should render Rebase Recipients Screen with Donate to a cause button 1`] = `
 <div>
   <div
     data-rk=""
@@ -2747,7 +2747,7 @@ exports[`Give View Disconnected should render project card with connect wallet b
                               >
                                 sOHM
                                  
-                                Yield
+                                Rebases
                               </div>
                             </div>
                             <div

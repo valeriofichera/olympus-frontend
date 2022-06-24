@@ -18,7 +18,7 @@ interface IDonorAddresses {
 }
 
 /**
- * sohmDebt: total amount of sOHM principal earning yield for the recipient
+ * sohmDebt: total amount of sOHM principal earning rebases for the recipient
  * gohmDebt: gOHM equivalent of sOHM debt
  */
 export interface IUserRecipientInfo {
@@ -35,16 +35,16 @@ export const donationInfoQueryKey = (address: string, networkId: NetworkId) =>
 
 /**
  * @notice Uses the currently connected address and networkId to request
- * donation amount, yield sent, first donation date, and recipient for
+ * donation amount, rebase amount sent, first donation date, and recipient for
  * all recipients the current user is donating to
  * @returns query object in which the data attribute holds an array of
  * these donation info items.
  *
  *          id: string representing the universal deposit id
  *          date: string representing when the donation was started
- *          deposit: amount of tokens earning yield for the recipient (returned as gOHM)
+ *          deposit: amount of tokens earning rebases for the recipient (returned as gOHM)
  *          recipient: string representing the address of the recipient
- *          yieldDonated: quantity of yield sent to recipient so far (returned as gOHM)
+ *          rebasesDonated: quantity of rebases sent to recipient so far (returned as gOHM)
  */
 export const useDonationInfo = () => {
   const { data: account } = useAccount();
@@ -87,7 +87,7 @@ export const useDonationInfo = () => {
       const selectedDepositIds = [];
       const selectedDeposits = [];
       const firstDonationDatePromises: Promise<string>[] = [];
-      const yieldSentPromises: Promise<BigNumber>[] = [];
+      const rebasesSentPromises: Promise<BigNumber>[] = [];
 
       for (let i = 0; i < allDeposits[0].length; i++) {
         // Given the conversions back and forth with sOHM and gOHM, this is a dust value that repeatedly
@@ -106,20 +106,20 @@ export const useDonationInfo = () => {
         });
         firstDonationDatePromises.push(firstDonationDatePromise);
 
-        const yieldSentPromise: Promise<BigNumber> = contract.donatedTo(address, allDeposits[0][i]).catch(() => {
+        const rebaseSentPromise: Promise<BigNumber> = contract.donatedTo(address, allDeposits[0][i]).catch(() => {
           // This will only revert if the user has not donated at all yet
-          console.log("You have not donated any yield yet.");
+          console.log("You have not donated any rebases yet.");
           return ethers.constants.Zero;
         });
-        yieldSentPromises.push(yieldSentPromise);
+        rebasesSentPromises.push(rebaseSentPromise);
       }
 
       // Define arrays to push data from resolved promises into
       let firstDonationData: string[] = [];
-      let yieldSentData: BigNumber[] = [];
+      let rebasesSentData: BigNumber[] = [];
       try {
         firstDonationData = await Promise.all(firstDonationDatePromises);
-        yieldSentData = await Promise.all(yieldSentPromises);
+        rebasesSentData = await Promise.all(rebasesSentPromises);
       } catch (e: unknown) {
         console.info(
           "If the following error contains 'user is not donating', then it is an expected error. No need to report it!",
@@ -133,7 +133,7 @@ export const useDonationInfo = () => {
           date: firstDonationData[i],
           deposit: ethers.utils.formatEther(allDeposits[1][selectedDeposits[i]]),
           recipient: allDeposits[0][selectedDeposits[i]],
-          yieldDonated: ethers.utils.formatEther(yieldSentData[i]),
+          rebasesDonated: ethers.utils.formatEther(rebasesSentData[i]),
         });
       }
 
@@ -159,7 +159,7 @@ export const redeemableBalanceQueryKey = (address: string, networkId: NetworkId)
  * @param address The address we would like to fetch the redeemable balance for
  * @returns query object in which the data attribute holds the redeemable balance
  *
- *          redeemableBalance: quantity of yield that has been sent to the recipient and
+ *          redeemableBalance: quantity of rebases that has been sent to the recipient and
  *                             can be redeemed (returned as gOHM)
  */
 export const useRedeemableBalance = (address: string) => {
@@ -258,7 +258,7 @@ export const recipientInfoQueryKey = (address: string, networkId: NetworkId) =>
  * @returns query object in which the data attribute holds the
  * recipient info object
  *
- *          sohmDebt: total amount of sOHM principal earning yield for the recipient
+ *          sohmDebt: total amount of sOHM principal earning rebases for the recipient
  *          gohmDebt: gOHM equivalent of sOHM debt
  */
 export const useRecipientInfo = (address: string) => {
@@ -327,22 +327,22 @@ export const useRecipientInfo = (address: string) => {
 };
 
 /**
- * Query key for useTotalYieldDonated, will refresh on address changes or
+ * Query key for useTotalRebasesDonated, will refresh on address changes or
  * networkId changes
  */
-export const totalYieldDonatedQueryKey = (address: string, networkId: NetworkId) =>
-  ["useTotalYieldDonated", address, networkId].filter(nonNullable);
+export const totalRebasesDonatedQueryKey = (address: string, networkId: NetworkId) =>
+  ["useTotalRebasesDonated", address, networkId].filter(nonNullable);
 
 /**
- * @notice Fetches total amount of sOHM yield donated to a specific
+ * @notice Fetches total amount of sOHM rebases donated to a specific
  * wallet throughout its history
  * @param address The wallet we would like to fetch the data for
  * @returns query object in which the data attribute holds the
  * total donated amount
  *
- *          totalDonated: yield that has been redeemed so far + current redeemable balance (returned as gOHM)
+ *          totalDonated: rebases that has been redeemed so far + current redeemable balance (returned as gOHM)
  */
-export const useTotalYieldDonated = (address: string) => {
+export const useTotalRebasesDonated = (address: string) => {
   const provider = useProvider();
   const { activeChain = { id: 1 } } = useNetwork();
 
@@ -363,9 +363,9 @@ export const useTotalYieldDonated = (address: string) => {
   };
 
   const query = useQuery<string, Error>(
-    totalYieldDonatedQueryKey(address, activeChain.id),
+    totalRebasesDonatedQueryKey(address, activeChain.id),
     async () => {
-      queryAssertion([address, activeChain.id], totalYieldDonatedQueryKey(address, activeChain.id));
+      queryAssertion([address, activeChain.id], totalRebasesDonatedQueryKey(address, activeChain.id));
 
       // If no contract object was successfully created, tell the user to switch to ETH
       if (!contract)
