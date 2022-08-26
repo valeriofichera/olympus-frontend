@@ -47,9 +47,15 @@ const renderDate = (item: TooltipPayloadItem) => {
  * @returns
  */
 const formatNumber = (type: DataFormat, item: number, decimals: number) => {
-  return type === DataFormat.Currency
-    ? formatCurrency(item, decimals)
-    : `${Math.round(item).toLocaleString("en-US")}${type}`;
+  if (type === DataFormat.Currency) {
+    return formatCurrency(item, decimals);
+  }
+
+  if (type === DataFormat.Percentage) {
+    return `${Math.round(item).toLocaleString("en-US")}%`;
+  }
+
+  return `${Math.round(item).toLocaleString("en-US")}${type}`;
 };
 
 const renderItem = (type: DataFormat, item: number, decimals = 0) => {

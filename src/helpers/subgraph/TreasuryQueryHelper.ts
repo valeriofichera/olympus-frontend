@@ -4,6 +4,7 @@ import {
   CATEGORY_STABLE,
   CATEGORY_VOLATILE,
   TOKEN_SUPPLY_TYPE_LIQUIDITY,
+  TOKEN_SUPPLY_TYPE_TOTAL_SUPPLY,
 } from "src/helpers/subgraph/Constants";
 
 export const getLiquidBackingPerOhmFloating = (liquidBacking: number, tokenSupplies: TokenSupply[]) =>
@@ -72,6 +73,18 @@ export const getOhmCirculatingSupply = (records: TokenSupply[]): number => {
  */
 export const getOhmFloatingSupply = (records: TokenSupply[]): number => {
   return records.reduce((previousValue, record) => previousValue + +record.supplyBalance, 0);
+};
+
+/**
+ * Returns the OHM total supply
+ *
+ * @param records
+ * @returns
+ */
+export const getOhmTotalSupply = (records: TokenSupply[]): number => {
+  return records
+    .filter(record => record.type == TOKEN_SUPPLY_TYPE_TOTAL_SUPPLY)
+    .reduce((previousValue, record) => previousValue + +record.supplyBalance, 0);
 };
 
 /**
