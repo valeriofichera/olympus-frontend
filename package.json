@@ -146,6 +146,7 @@
     "stream-http": "^3.2.0",
     "type-graphql": "^1.1.1",
     "typechain": "^8.1.0",
+    "typechain-target-react-query-wagmi": "^0.1.0",
     "url": "^0.11.0"
   },
   "scripts": {
@@ -170,7 +171,7 @@
     "lingui:branch:translators": "cd src/locales/translations && git checkout translators && yarn lingui:fetch",
     "lingui:fetch": "cd src/locales/translations && git pull",
     "lingui:prepare": "pwd && if [ ! -d src/locales/translations ]; then git clone https://github.com/OlympusDAO/olympus-translations.git src/locales/translations; fi",
-    "typechain:build": "yarn run typechain --target ethers-v5 --out-dir src/typechain src/abi/*.json src/abi/**/*.json",
+    "typechain:build": "yarn run typechain --target ethers-v5 --out-dir src/typechain src/abi/*.json src/abi/**/*.json && yarn run typechain --target react-query-wagmi --out-dir src/typechain/react-query-hooks src/abi/*.json src/abi/**/*.json",
     "preinstall": "yarn lingui:prepare || exit 0",
     "postinstall": "yarn typechain:build && yarn lingui:compile",
     "prepare": "husky install",
