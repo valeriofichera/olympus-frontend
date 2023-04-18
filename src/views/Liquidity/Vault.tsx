@@ -354,7 +354,7 @@ export const Vault = () => {
                 />
                 <DataRow title="Your LP Tokens" balance={formatNumber(Number(vault.lpTokenBalance), 2)} />
                 <DataRow
-                  title={`Max You Can Deposit ${vault.pairTokenName}-OHM LP)`}
+                  title={`Max You Can Deposit (${vault.pairTokenName}-OHM LP)`}
                   balance={formatNumber(Number(vault.depositLimit), 2) || "0"}
                 />
               </Box>
