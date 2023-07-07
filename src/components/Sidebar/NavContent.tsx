@@ -35,12 +35,12 @@ const NavContent: React.VFC = () => {
             <Link href="https://olympusdao.finance" target="_blank" rel="noopener noreferrer">
               <SvgIcon
                 color="primary"
-                viewBox="0 0 50 50"
+                viewBox="0 0 143 111"
                 component={OlympusIcon}
-                style={{ minWidth: "51px", minHeight: "51px", width: "51px" }}
+                style={{ minWidth: "143px", minHeight: "111px", width: "143px" }}
               />
               <Typography fontSize="24px" fontWeight="700" lineHeight="32px">
-                Olympus
+                TurtleShell
               </Typography>
             </Link>
           </Box>
